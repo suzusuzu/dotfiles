@@ -3,10 +3,19 @@ export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 
 export HISTFILE=$HOME/.zsh_history
-export HISTSIZE=1000
-export SAVEHIST=100000
+export HISTSIZE=100000
+export SAVEHIST=1000000
 setopt hist_ignore_dups
 setopt EXTENDED_HISTORY
+
+function peco-history-selection() {
+    BUFFER=`history -n 1 | tac  | awk '!a[$0]++' | peco`
+    CURSOR=$#BUFFER
+    zle reset-prompt
+}
+zle -N peco-history-selection
+bindkey '^R' peco-history-selection
+
 
 autoload -Uz compinit && compinit -i
 
@@ -39,3 +48,4 @@ fi
 
 
 zplug load --verbose
+
