@@ -1,0 +1,15 @@
+set autoread
+set number
+set expandtab
+set tabstop=4
+set shiftwidth=4
+set ignorecase
+set smartcase
+set incsearch
+set wrapscan
+set wrap
+set autoindent
+set showmatch
+set nobackup
+set noswapfile
+syntax on
