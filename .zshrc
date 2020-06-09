@@ -7,6 +7,7 @@ export HISTSIZE=100000
 export SAVEHIST=1000000
 setopt hist_ignore_dups
 setopt EXTENDED_HISTORY
+setopt share_history
 
 function peco-history-selection() {
     BUFFER=`history -n 1 | tac  | awk '!a[$0]++' | peco`
