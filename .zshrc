@@ -9,6 +9,8 @@ setopt hist_ignore_dups
 setopt EXTENDED_HISTORY
 setopt share_history
 
+alias ll='ls -al'
+
 function peco-history-selection() {
     BUFFER=`history -n 1 | tac  | awk '!a[$0]++' | peco`
     CURSOR=$#BUFFER
