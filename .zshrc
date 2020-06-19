@@ -33,6 +33,8 @@ zplug "mafredri/zsh-async", from:github
 zplug "zsh-users/zsh-syntax-highlighting"
 
 zplug "zsh-users/zsh-history-substring-search"
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
 
 zplug romkatv/powerlevel10k, as:theme, depth:1
 
