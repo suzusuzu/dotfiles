@@ -12,4 +12,6 @@ set autoindent
 set showmatch
 set nobackup
 set noswapfile
+set nocompatible
+set backspace=indent,eol,start
 syntax on
