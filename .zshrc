@@ -3,6 +3,10 @@ export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 export TERM=xterm-256color
 
+if [[ $(uname -r | grep 'microsoft') ]]; then
+    export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
+fi
+
 export HISTFILE=$HOME/.zsh_history
 export HISTSIZE=100000
 export SAVEHIST=1000000
