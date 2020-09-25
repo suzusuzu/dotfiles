@@ -2,6 +2,7 @@ export PATH=$PATH:/usr/local/go/bin
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 export TERM=xterm-256color
+export EDITOR=vim
 
 if [[ $(uname -r | grep 'microsoft') ]]; then
     export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
