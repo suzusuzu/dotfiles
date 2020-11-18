@@ -6,6 +6,8 @@ export EDITOR=vim
 
 if [[ $(uname -r | grep 'microsoft') ]]; then
     export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
+elif [[ $(uname -a | grep 'Darwin') ]]; then
+    eval "$(pyenv init -)"
 fi
 
 export HISTFILE=$HOME/.zsh_history
