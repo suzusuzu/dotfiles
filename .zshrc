@@ -8,6 +8,7 @@ if [[ $(uname -r | grep 'microsoft') ]]; then
     export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
 elif [[ $(uname -a | grep 'Darwin') ]]; then
     eval "$(pyenv init -)"
+    export PATH="/usr/local/opt/openjdk/bin:$PATH"
 fi
 
 export HISTFILE=$HOME/.zsh_history
@@ -17,7 +18,7 @@ setopt hist_ignore_dups
 setopt EXTENDED_HISTORY
 setopt share_history
 
-alias ll='ls -al'
+alias ll='ls -ahl'
 
 function peco-history-selection() {
     BUFFER=`history -n 1 | tac  | awk '!a[$0]++' | peco`
@@ -25,8 +26,8 @@ function peco-history-selection() {
     zle reset-prompt
 }
 zle -N peco-history-selection
-bindkey '^R' peco-history-selection
 bindkey -e
+bindkey '^R' peco-history-selection
 
 
 autoload -Uz compinit && compinit -i
@@ -67,3 +68,6 @@ zplug load --verbose
 # tabtab source for packages
 # uninstall by removing these lines
 [[ -f ~/.config/tabtab/__tabtab.zsh ]] && . ~/.config/tabtab/__tabtab.zsh || true
+
+# kubectl
+source <(kubectl completion zsh)
