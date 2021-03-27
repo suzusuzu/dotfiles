@@ -4,8 +4,9 @@ export PATH=$PATH:$GOPATH/bin
 export TERM=xterm-256color
 export EDITOR=vim
 
-if [[ $(uname -r | grep 'microsoft') ]]; then
+if [[ $(uname -r | grep 'Microsoft') ]]; then
     export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
+    export PATH=$PATH:$HOME/bin
 elif [[ $(uname -a | grep 'Darwin') ]]; then
     eval "$(pyenv init -)"
     export PATH="/usr/local/opt/openjdk/bin:$PATH"
