@@ -7,12 +7,12 @@ export EDITOR=vim
 if [[ $(uname -r | grep 'Microsoft') ]]; then
     export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
     export PATH=$PATH:$HOME/bin
-elif [[ $(uname -a | grep 'Darwin') ]]; then
-    eval "$(pyenv init -)"
-    export PATH="/usr/local/opt/openjdk/bin:$PATH"
     export PYENV_ROOT="$HOME/.pyenv"
     export PATH="$PYENV_ROOT/bin:$PATH"
     eval "$(pyenv init -)"
+elif [[ $(uname -a | grep 'Darwin') ]]; then
+    eval "$(pyenv init -)"
+    export PATH="/usr/local/opt/openjdk/bin:$PATH"
 fi
 
 export HISTFILE=$HOME/.zsh_history
