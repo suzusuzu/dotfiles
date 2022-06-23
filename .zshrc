@@ -13,6 +13,16 @@ if [[ $(uname -r | grep -i 'microsoft') ]]; then
 elif [[ $(uname -a | grep 'Darwin') ]]; then
     eval "$(pyenv init -)"
     export PATH="/usr/local/opt/openjdk/bin:$PATH"
+elif [[ $(uname -a | grep 'Linux') ]]; then
+    . "$HOME/.cargo/env"
+    alias pbcopy='xsel --clipboard --input'
+    alias docker='podman'
+    export SSH_AUTH_SOCK=~/.1password/agent.sock
+    export PYENV_ROOT="$HOME/.pyenv"
+    command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+    eval "$(pyenv init -)"
+    export WASMTIME_HOME="$HOME/.wasmtime"
+    export PATH="$WASMTIME_HOME/bin:$PATH"
 fi
 
 export HISTFILE=$HOME/.zsh_history
