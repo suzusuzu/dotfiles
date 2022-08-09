@@ -11,8 +11,15 @@ if [[ $(uname -r | grep -i 'microsoft') ]]; then
     export PATH="$PYENV_ROOT/bin:$PATH"
     eval "$(pyenv init -)"
 elif [[ $(uname -a | grep 'Darwin') ]]; then
+    eval "$(pyenv init --path)"
     eval "$(pyenv init -)"
+    export PATH=$HOME/.nodebrew/current/bin:$PATH
     export PATH="/usr/local/opt/openjdk/bin:$PATH"
+    export SSH_AUTH_SOCK=~/.1password/agent.sock
+    export PATH="$HOME/.poetry/bin:$PATH"
+    export JAVA_HOME="/opt/homebrew/Cellar/openjdk@11/11.0.15"
+    export PATH="$JAVA_HOME/bin:$PATH"
+    export PATH="$PATH:/Users/suzu/workspace/depot_tools"
 elif [[ $(uname -a | grep 'Linux') ]]; then
     . "$HOME/.cargo/env"
     alias pbcopy='xsel --clipboard --input'
@@ -85,3 +92,5 @@ zplug load --verbose
 
 # kubectl
 source <(kubectl completion zsh)
+
+export PATH="$HOME/.poetry/bin:$PATH"
